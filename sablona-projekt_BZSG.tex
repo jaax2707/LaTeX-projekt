@@ -1,0 +1,100 @@
+% Soubory musí být v kódování, které je nastaveno v příkazu \usepackage[...]{inputenc}
+
+\documentclass[%
+%  draft,    				  % Testovací překlad
+  11pt,       				% Velikost základního písma je 11 bodů
+  a4paper, 					% Formát papíru je A4
+  oneside,   				% Jednostranny dokument
+%% Z následujících voleb lze použít jen jednu:
+slovak,             % originální jazyk je slovenčina
+%czech              		% originální jazyk je čeština (výchozí)
+]{report}				    	% Dokument třídy 'zpráva'
+
+\usepackage[utf8]			%	Kódování zdrojových souborů
+	{inputenc}					% Balíček pro nastavení kódování zdrojových souborů
+
+\usepackage{graphicx} % Balíček 'graphicx' pro vkládání obrázků
+											% Nutné pro vložení log školy a fakulty
+
+\usepackage[
+	unicode,						% Záložky a informace budou v kódování unicode
+	breaklinks=true,		% Hypertextové odkazy mohou obsahovat zalomení řádku
+	hypertexnames=false % Názvy hypertextových odkazů budou tvořeny
+											% nezávisle na názvech TeXu
+]{hyperref}						% Balíček 'hyperref' pro sazbu hypertextových odkazů
+											% Nutné pro použití příkazu 'nastavenipdf' balíčku 'BZSG'
+
+\usepackage{enumitem} % Balíček pro nastavení mezerování v odrážkách
+  \setlist{topsep=0pt,partopsep=0pt,noitemsep}
+
+\usepackage{color} 		% Balíček pro používání barev
+
+\usepackage{cmap} 		% Balíček cmap zajišťuje, že PDF vytvořené `pdflatexem' je
+											% plně "prohledávatelné" a "kopírovatelné"
+
+\usepackage{upgreek}	% Balíček pro sazbu stojatých řeckých písmem
+											% např. stojaté pí: \uppi
+											% např. stojaté mí: \upmu (použitelné třeba v mikrometrech)
+											% pozor, grafická nekompatibilita s fonty typu Computer Modern!
+
+%% Nastavení českého jazyka při sazbě v češtině.
+% Varianta A:
+\usepackage{babel}    % Balíček pro sazbu různojazyčných dokumentů; kompilovat (pdf)latexem!
+  										% převezme si z parametrů třídy správný jazyk
+\usepackage{lmodern}	% vektorové fonty Latin Modern, nástupce půvoních Knuthových Computern Modern fontů
+\usepackage{textcomp} % Dodatečné symboly
+\usepackage[T1]{fontenc}  % Kódování fontu - mj. kvůli správným vzorům pro dělení slov
+
+\usepackage[%
+%% Z následujících voleb lze použít pouze jednu
+% left,               % Rovnice a popisky plovoucich objektů budou %zarovnány vlevo
+  center,             % Rovnice a popisky plovoucich objektů budou zarovnány na střed (vychozi)
+bzsg									% sazba semestrálního projektu z předmětu BZSG
+]{BZSG_projekt}       % Balíček pro sazbu studentských prací
+                      % Musí být vložen až jako poslední, aby
+                      % ostatní balíčky nepřepisovaly jeho příkazy
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%      Definice informací o dokumentu             %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Jméno a příjmení autora ve tvaru
+%  [tituly před jménem]{Křestní}{Příjmení}[tituly za jménem][ID]
+\autor{Tomáš}{Dvonč}[173974]
+
+%% Rok 
+\rok{2017/18}
+
+%% Označení ústavu
+\ustav{Ústav telekomunikací}
+
+\input{_makro}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%     Nastavení polí ve Vlastnostech dokumentu PDF      %%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Při vloženém balíčku 'hyperref' lze použít příkaz '\nastavenipdf'
+\nastavenipdf
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%       Začátek dokumentu               %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% nebo vytvoření titulní stránky z balíčku
+\vytvortitulku
+   
+%% Vysázení obsahu
+\obsahbzsg %obsah, obrázky, tabulky
+
+%% Vložení souboru 'text/text'
+\include{text/text}
+
+%% Vložení souboru 'text/literatura' se seznamem literatury
+\include{text/literatura}
+
+%% Konec dokumentu
+\end{document}
