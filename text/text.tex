@@ -1,92 +1,92 @@
 \chapter[Zabezpečenie komunikácie]{Zabezpečenie komunikácie}
 
 \section{História vývoja SSL/TLS protokolov}
-SSL prvýkrát predstavila spoločnosť \emph{Netscape} v rokoch 1993-1994. Rast počtu ľudí používajúcich internet rýchlo stúpal a rovnako aj potreba bezpečnosti komunikácie. Dnes SSL/TLS používa takmer každá online služba. 
+SSL prvýkrát predstavila spoločnosť \emph{Netscape} v~roku 1993. Rast počtu ľudí používajúcich internet rýchlo stúpal a~rovnako aj potreba bezpečnosti komunikácie. Dnes SSL/TLS používa takmer každá online služba. 
 
-Prvá verzia \textbf{SSL 1.0} nebola nikdy uvedená na trh, pretože mala obrovské bezpečnostné medze. Prvé oficiálne vydanie \textbf{SSL 2.0} prišlo o rok neskôr v roku 1995. Posledná verzia SSL protokolu vyšla v novembri 1996. S odstupom času už ani táto verzia sa nedala považovať za dostatočné zabezpečenú. V roku 2011 bol protokol SSL 2.0 stiahnutý z trhu pretože mal tieto nedostatky:
+Prvá verzia \textbf{SSL 1.0} nebola nikdy uvedená na trh, pretože mala obrovské bezpečnostné medze. Prvé oficiálne vydanie \textbf{SSL 2.0} prišlo o~rok neskôr v~roku 1995. Posledná verzia SSL protokolu vyšla v~novembri 1996. S~odstupom času už ani táto verzia sa nedala považovať za dostatočné zabezpečenú. V~roku 2011 bol protokol SSL 2.0 stiahnutý z~trhu pretože mal tieto nedostatky.
 \begin{enumerate}
 
-\item Komunikácia používala slabý hashovací algoritmus, ktorý sa už dal v tú dobu prelomiť. Táto forma kryptografického algoritmu sa viac nepovažovala za bezpečnú.
+\item Komunikácia používala slabý hashovací algoritmus, ktorý sa už dal v~tú dobu prelomiť. Táto forma kryptografického algoritmu sa viac nepovažovala za bezpečnú.
 
-\item Pri nadviazaní komunikácie útočník získal odosielanú správu a bol schopný prinútiť klienta zameniť hashovací algoritmus za zraniteľnejší ako si normálne vybral.
+\item Pri nadviazaní komunikácie útočník získal odosielanú správu a~bol schopný prinútiť klienta zameniť hashovací algoritmus za zraniteľnejší ako si normálne vybral.
 
-\item Integrita a šifrovanie správ používali rovnaký kľúč. V prípade ak klient a server používali slabý šifrovací algoritmus dochádzalo k prelomeniu zabezpečenia.
+\item Integrita a~šifrovanie správ používali rovnaký kľúč. V~prípade ak klient a~server používali slabý šifrovací algoritmus dochádzalo k~prelomeniu zabezpečenia.
 
 \end{enumerate}
 
-V roku 1999 bola uvedená na trh prvá verzia protokolu \textbf{TLS 1.0}
-Neskôr bola vyvinutá novšia verzia \textbf{SSL 3.0} ale v roku 2015 bola opäť zastarala a podľa oficiálneho vyhlásenia \emph{IEFT} bola akákoľvek verzia TLS považovaná za bezpečnejšiu ako SSL 3.0 a to z~nasledujúcich dôvodov:
+V~roku 1999 bola uvedená na trh prvá verzia protokolu \textbf{TLS 1.0}
+Neskôr bola vyvinutá novšia verzia \textbf{SSL 3.0} ale v~roku 2015 bola opäť zastarala a~podľa oficiálneho vyhlásenia \emph{IEFT} bola akákoľvek verzia TLS považovaná za bezpečnejšiu ako SSL 3.0 a~to z~nasledujúcich dôvodov.
 
 \begin{enumerate}
 
-\item Výmena kľúčov medzi klientom a serverom sa považovala naďalej za nezabezpečenú.
+\item Výmena kľúčov medzi klientom a~serverom sa považovala naďalej za nezabezpečenú.
 
 \item Všetky certifikáty boli postavené na princípe slabých hashovacích algoritmov, ktorých použitie už nebolo ideálne.
 
-\item SSL 3.0 malo obmedzene možnosti a nebolo schopné využiť mnohé funkcie, ktoré boli pridané do novších verzii TLS.
+\item SSL 3.0 malo obmedzene možnosti a~nebolo schopné využiť mnohé funkcie, ktoré boli pridané do novších verzii TLS.
 
 \end{enumerate}
 
-\textbf{TLS 1.1} bolo vydané v roku 2006, oproti staršej verzií bola pridaná ochrana proti CBC (\emph{cipher-block chaining}) útokom. Implicitný inicializačný vektor bol nahradený explicitným.
+\textbf{TLS 1.1} bolo vydané v~roku 2006, oproti staršej verzií bola pridaná ochrana proti CBC (\emph{cipher block chaining}) útokom. Implicitný inicializačný vektor bol nahradený explicitným.
 
-\textbf{TLS 1.2} bolo uvedené na trh v roku 2008. Bolo to pokračovanie protokolu TLS~1.1 s~novými zmenami. Niektoré hashovacie algoritmy boli nahradené za novšie kryptografické funkcie.
+\textbf{TLS 1.2} bolo uvedené na trh v~roku 2008. Bolo to pokračovanie protokolu TLS~1.1 s~novými zmenami. Niektoré hashovacie algoritmy boli nahradené za novšie kryptografické funkcie.
 
-\textbf{TLS 1.3} je v štádiu vývoja a podrobnejšie detaily sú zatiaľ nejasné. Niektoré z hlavných zmien oproti verzii TLS 1.2 sú nasledovné:
+\textbf{TLS 1.3} je v~štádiu vývoja a~podrobnejšie detaily sú zatiaľ nejasné. Niektoré z~hlavných zmien oproti verzii TLS 1.2 sú nasledovné.
 \begin{enumerate}
 
 \item Ukončenie podpory slabších kryptografických hashovacích funkcií.
 
-\item Bude zavedené vyžadovanie digitálneho podpisu aj v prípade použitia pred\-chá\-dza\-jú\-cej konfigurácie.
+\item Bude zavedené vyžadovanie digitálneho podpisu aj v~prípade použitia pred\-chá\-dza\-jú\-cej konfigurácie.
 
-\item Podpora znižovania počtu nezabezpečených alebo zastaraných funkcií, vrátane kompresie a ďalšie iné. \cite{tls-ssl-history}
+\item Podpora znižovania počtu nezabezpečených alebo zastaraných funkcií, vrátane kompresie a~ďalšie iné. \cite{tls-ssl-history}
 
 \end{enumerate}
 
 \section{Kryptografické protokoly}
-Šifrovanie je proces, v ktorom sa čitateľná správa (text) konvertuje na šifrovaný formát, ktorý nie je čitateľný človekom. Hlavným účelom šifrovania je zabezpečiť, aby iba autorizovaná strana mohla dešifrovať a čítať pôvodnú správu. Keď sa nezašifrované dáta vymieňajú medzi dvoma účastníkmi, s použitím akéhokoľvek média, tretia strana môže zachytiť a prečítať vymieňanú komunikáciu.
+Šifrovanie je proces, v~ktorom sa čitateľná správa (text) konvertuje na šifrovaný formát, ktorý nie je čitateľný človekom. Hlavným účelom šifrovania je zabezpečiť, aby iba autorizovaná strana mohla dešifrovať a~čítať pôvodnú správu. Keď sa nezašifrované dáta vymieňajú medzi dvoma účastníkmi, s~použitím akéhokoľvek média, tretia strana môže zachytiť a~prečítať vymieňanú komunikáciu.
 
-Ak výmena obsahuje citlivé informácie a tretia strana môže takúto komunikáciu zachytiť, mohla by tiež manipulovať s údajmi a zmeniť informácie, ktoré sa vymieňajú, čím ohrozí integritu správy.
+Ak výmena obsahuje citlivé informácie a~tretia strana môže takúto komunikáciu zachytiť, mohla by tiež manipulovať s~údajmi a~zmeniť informácie, ktoré sa vymieňajú, čím ohrozí integritu správy.
 	
-Jeden zo spôsobov ako zmierniť potenciálny útok a zabezpečiť komunikáciu je použitie  kryptografického protokolu SSL alebo TLS, ktoré si v tejto sekcií detailnejšie popíšeme. 
+Jeden zo spôsobov ako zmierniť potenciálny útok a~zabezpečiť komunikáciu je použitie  kryptografického protokolu SSL alebo TLS, ktoré si v~tejto sekcií detailnejšie popíšeme. 
 
 \subsection{SSL protokol}
 \textbf{SSL} (\emph{Secure Sockets Layer}) je kryptografický komunikačný protokol, ktorý na prenos informácií využíva protokol transportnej vrstvy TCP.
 
-Základnou podstatou protokolu SSL je poskytnúť súkromie a spoľahlivosť medzi dvomi komunikujúcimi aplikáciami.
+Základnou podstatou protokolu SSL je poskytnúť súkromie a~spoľahlivosť medzi dvomi komunikujúcimi aplikáciami.
 
-SSL používa kombináciu verejného kľúča a symetrického šifrovania kľúčov na zabezpečenie spojenia medzi dvoma zariadeniami. Zvyčajne sa jedná o webový alebo poštový server komunikujúci prostredníctvom internetu alebo inej siete, napríklad TCP/IP.
+SSL používa kombináciu verejného kľúča a~symetrického šifrovania kľúčov na zabezpečenie spojenia medzi dvoma zariadeniami. Zvyčajne sa jedná o~webový alebo poštový server komunikujúci prostredníctvom internetu alebo inej siete, napríklad TCP/IP.
 
-SSL poskytuje mechanizmus na šifrovanie a overovanie údajov pri prenose informácie medzi klientom a serverom. SSL pracuje medzi transportnou a sieťovou vrstvou, ktoré sú zodpovedné za prenos a smerovanie dát pod protokolmi aplikačnej vrstvy, ako je HTTP a SMTP (\emph{Simple Mail Transport Protocol}).
+SSL poskytuje mechanizmus na šifrovanie a~overovanie údajov pri prenose informácie medzi klientom a~serverom. SSL pracuje medzi transportnou a~sieťovou vrstvou, ktoré sú zodpovedné za prenos a~smerovanie dát pod protokolmi aplikačnej vrstvy, ako je HTTP a~SMTP (\emph{Simple Mail Transport Protocol}).
 
-Okrem podpory prenosu informacií medzi webovým serverom a klientom je tento protokol implementovaný aj pre aplikácie vrátane e-mailu, prenosu súborov, správ a VoIP (Voice over IP).
+Okrem podpory prenosu informacií medzi webovým serverom a~klientom je tento protokol implementovaný aj pre aplikácie vrátane emailu, prenosu súborov, správ a~VoIP (\emph{Voice over IP}).
 
-Protokol SSL obsahuje dva pod protokoly (viac obr. \ref{struktura-ssl}):
+Protokol SSL obsahuje dva pod protokoly (viac obr. \ref{struktura-ssl}).
 \begin{enumerate}
 
-\item \textbf{\emph{Record} protokol} definuje spôsob akým si komunikujúce zariadenia vymieňajú dáta pomocou protokolu SSL. Ďalej špecifikuje ako majú byť odosielané údaje pripravené na prenos a ako majú byť overené alebo dešifrované pri prijatí.
+\item \textbf{\emph{Record} protokol} definuje spôsob akým si komunikujúce zariadenia vymieňajú dáta pomocou protokolu SSL. Ďalej špecifikuje ako majú byť odosielané údaje pripravené na prenos a~ako majú byť overené alebo dešifrované pri prijatí.
 
-\item \textbf{\emph{Handshake} protokol} definuje ako klient a server vytvoria spojenie SSL vrátane dohody o tom, ktoré kryptografické systémy budú použité.
+\item \textbf{\emph{Handshake} protokol} definuje ako klient a~server vytvoria spojenie SSL vrátane dohody o~tom, ktoré kryptografické systémy budú použité.
 
 \end{enumerate}
 
-Z dôvodu početných nedostatkov a zraniteľností protokolu a implementácie bol protokol SSL v roku 2015 považovaný organizáciou \emph{IETF} (\emph{Internet Engineering Task Force}) za~zastaraný a bol nahradený protokolom TLS, ktorý je spätne kompatibilný s protokolom SSL 3.0.
+Z~dôvodu početných nedostatkov a~zraniteľností protokolu a~implementácie bol protokol SSL v~roku 2015 považovaný organizáciou \emph{IETF} (\emph{Internet Engineering Task Force}) za~zastaraný a~bol nahradený protokolom TLS, ktorý je spätne kompatibilný s~protokolom SSL 3.0.
 
 \subsection{TLS protokol}
-S cieľom poskytnúť nový internetový štandard SSL, vydal \emph{IETF} v januári 1999 protokol TLS (\emph{Transport Layer Security}). Protokol TLS je navrhnutý, aby aplikáciám umožňoval komunikovať bezpečným spôsobom: autentifikáciou, predchádzaním odposluchu a odolnosťou proti modifikácii správ. V praxi zabezpečená webová aplikácia využíva všetky tri služby.
+S~cieľom poskytnúť nový internetový štandard SSL, vydal \emph{IETF} v~januári 1999 protokol TLS (\emph{Transport Layer Security}). Protokol TLS je navrhnutý, aby aplikáciám umožňoval komunikovať bezpečným spôsobom: autentifikáciou, predchádzaním odposluchu a~odolnosťou proti modifikácii správ. V~praxi zabezpečená webová aplikácia využíva všetky tri služby.
 
 \begin{enumerate}
 
-\item \textbf{Šifrovanie}: je mechanizmus na utajenie toho, čo sa posiela z jedného hostiteľa do~druhého
+\item \textbf{Šifrovanie} je mechanizmus na utajenie toho, čo sa posiela z~jedného hostiteľa do~druhého.
 
-\item \textbf{Autentifikácia}: je mechanizmus na overenia pravosti poskytnutého identifikačného materiálu.
+\item \textbf{Autentifikácia} je mechanizmus na overenia pravosti poskytnutého identifikačného materiálu.
 
-\item \textbf{Integrita}: je mechanizmus na detekciu neoprávnenej správy a falšovaniu správ
+\item \textbf{Integrita} je mechanizmus na detekciu neoprávnenej správy a~falšovaniu správ.
 
 \end{enumerate}
 
-Za účelom vytvorenia kryptograficky zabezpečeného dátového kanálu sa musia účastníci  dohodnúť, ktoré šifry a kľúče budu použivať na šifrovanie dát. Súčasťou nadviazania komunikácie je umožnenie obidvom stranám overiť svoju totožnosť. Pri používaní v pre\-hlia\-da\-či tento mechanizmus autentifikácie umožňuje klientovi overiť, či server (napr. banka) je ten, kto tvrdí že je a nie niekto iný. Tým sa overí totožnosť organizácie.
+Za účelom vytvorenia kryptograficky zabezpečeného dátového kanálu sa musia účastníci  dohodnúť, ktoré šifry a~kľúče budu použivať na šifrovanie dát. Súčasťou nadviazania komunikácie je umožnenie obidvom stranám overiť svoju totožnosť. Pri používaní v~pre\-hlia\-da\-či tento mechanizmus autentifikácie umožňuje klientovi overiť, či server (napr. banka) je ten, kto tvrdí že je a~nie niekto iný. Tým sa overí totožnosť organizácie.
 
-Nakoniec pri šifrovaní a autentifikácii protokol TLS poskytuje aj svoj vlastný mechanizmus šifrovania správ a každú správu podpíše autentifikačným kódom správy MAC (\emph{Message Authentication Code}). MAC algoritmus je jednosmerná kryptografická hashovacia funkcia, ktorej kľúče sú predurčené oboma partnermi. Pri každom odoslaní záznamu TLS sa pre danú správu vygeneruje a pripojí hodnota MAC a prijímač potom dokáže vypočítať a overiť odoslanú hodnotu MAC na zabezpečenie integrity a pravosti správ. \cite{tls-protokol}
+Nakoniec pri šifrovaní a~autentifikácii protokol TLS poskytuje aj svoj vlastný mechanizmus šifrovania správ a~každú správu podpíše autentifikačným kódom správy MAC (\emph{Message Authentication Code}). MAC algoritmus je jednosmerná kryptografická hashovacia funkcia, ktorej kľúče sú predurčené oboma partnermi. Pri každom odoslaní záznamu TLS sa pre danú správu vygeneruje a~pripojí hodnota MAC a~prijímač potom dokáže vypočítať a~overiť odoslanú hodnotu MAC na zabezpečenie integrity a~pravosti správ. \cite{tls-protokol}
 
 \begin{figure}[!h]
     \centering
@@ -97,26 +97,26 @@ Nakoniec pri šifrovaní a autentifikácii protokol TLS poskytuje aj svoj vlastn
 \end{figure}
 
 \section{Architektúra zabezpečenia (SSL/TLS)}
-Kryptografia je nevyhnutný nástroj na ochranu informácií v počítačových systémoch. Po\-u\-ží\-va ju denne milión ľudí na celom svete. Kryptografické systémy sú najdôležitejšou súčasťou štandardných protokolov ako je napríklad \textbf{TLS}, čo pomerne ľahko začleňuje silné šifrovanie do širokej škály aplikácií.
+Kryptografia je nevyhnutný nástroj na ochranu informácií v~počítačových systémoch. Po\-u\-ží\-va ju denne milión ľudí na celom svete. Kryptografické systémy sú najdôležitejšou súčasťou štandardných protokolov ako je napríklad \textbf{TLS}, čo pomerne ľahko začleňuje silné šifrovanie do širokej škály aplikácií.
 
 \subsection{Výmena kľúčov}
-Dôležitá vlastnosť, ktorá určuje účinnosť šifry, je veľkosť tajného kľúča. Čím je kľúč väčší, tým zložitejšie je prelomenie kódu. Pre pochopenie zvážime algoritmus s extrémne malou veľkosťou kľúča: 2 bity. V tomto príklade samotný typ algoritmu naozaj nezohráva dôležitú úlohu. Koniec koncov, s 2 bitmi sú len štyri možné kombinácie kľúčov. Útočník, ktorý získal šifrované údaje jednoducho môže vyskúšať všetky štyri možnosti.
+Dôležitá vlastnosť, ktorá určuje účinnosť šifry, je veľkosť tajného kľúča. Čím je kľúč väčší, tým zložitejšie je prelomenie kódu. Pre pochopenie zvážime algoritmus s~extrémne malou veľkosťou kľúča: 2 bity. V~tomto príklade samotný typ algoritmu naozaj nezohráva dôležitú úlohu. Koniec koncov, s~2 bitmi sú len štyri možné kombinácie kľúčov. Útočník, ktorý získal šifrované údaje jednoducho môže vyskúšať všetky štyri možnosti.
 
-Existujú dve základné techniky šifrovania informácií: \textbf{symetrické} šifrovanie (tiež nazývané šifrovanie tajného kľúča) a \textbf{asymetrické} šifrovanie (tiež nazývané šifrovanie verejným kľúčom). 
-
-\begin{enumerate}
-
-\item \textbf{Symetrické šifrovanie} je najstaršou a najznámejšou používanou technikou. V texte správy sa použije \textbf{tajný kľúč} aby sa zmenil obsah určitým spôsobom. Použije sa napríklad číslo, slovo alebo len reťazec náhodných písmen. Môže to byť aj jednoduché posunutie každého písmena o niekoľko miest v abecede. Pokiaľ odosielateľ aj príjemca poznajú tajný kľúč, môžu šifrovať a dešifrovať všetky správy, ktoré tento kľúč využívajú. Kryptografovia tiež charakterizujú symetrické šifrovacie algoritmy podľa toho, ako spracovávajú vstupné dáta. Môžeme ich rozdeliť do dvoch skupín:
+Existujú dve základné techniky šifrovania informácií: \textbf{symetrické} šifrovanie (tiež nazývané šifrovanie tajného kľúča) a~\textbf{asymetrické} šifrovanie (tiež nazývané šifrovanie verejným kľúčom). 
 
 \begin{enumerate}
 
-\item \textbf{Prúdové šifry} spracovávajú vstupne dáta (bajty) v čase, a môžu prijať akú\-koľvek veľkosť vstupu pre šifrovanie.
+\item \textbf{Symetrické šifrovanie} je najstaršou a~najznámejšou používanou technikou. V~texte správy sa použije \textbf{tajný kľúč} aby sa zmenil obsah určitým spôsobom. Použije sa napríklad číslo, slovo alebo len reťazec náhodných písmen. Môže to byť aj jednoduché posunutie každého písmena o~niekoľko miest v~abecede. Pokiaľ odosielateľ aj príjemca poznajú tajný kľúč, môžu šifrovať a~dešifrovať všetky správy, ktoré tento kľúč využívajú. Kryptografovia tiež charakterizujú symetrické šifrovacie algoritmy podľa toho, ako spracovávajú vstupné dáta. Môžeme ich rozdeliť do dvoch skupín:
 
-\item \textbf{Blokové šifry} na rozdiel od toho, pracujú iba na blokoch dát s pevnou veľkosťou, typicky 8 bajtov. V porovnaní s prúdovými šiframi vyžadujú menej výpočtov a sú vo všeobecnosti o niečo menej náchylné na útok. Sú však o niečo menej pohodlné na použitie.
+\begin{enumerate}
+
+\item \textbf{Prúdové šifry} spracovávajú vstupne dáta (bajty) v~čase, a~môžu prijať akú\-koľvek veľkosť vstupu pre šifrovanie.
+
+\item \textbf{Blokové šifry} na rozdiel od toho, pracujú iba na blokoch dát s~pevnou veľkosťou, typicky 8 bajtov. V~porovnaní s~prúdovými šiframi vyžadujú menej výpočtov a~sú vo všeobecnosti o~niečo menej náchylné na útok. Sú však o~niečo menej pohodlné na použitie.
 
 \end{enumerate}
 
-V tabuľke \ref{symetricke-sifry} sú uvedené symetrické šifry, ktoré sa najčastejšie používajú s protokolom \emph{Secure Sockets Layer} (SSL).
+V~tabuľke \ref{symetricke-sifry} sú uvedené symetrické šifry, ktoré sa najčastejšie používajú s~protokolom \emph{Secure Sockets Layer} (SSL).
 
 \begin{table}[h]
   \caption{Prehľad symetrických šifrovacích algoritmov}
@@ -129,7 +129,7 @@ V tabuľke \ref{symetricke-sifry} sú uvedené symetrické šifry, ktoré sa naj
 	    \hline\hline
 	    DES	& Data Encryption Standard 	& Bloková šifra \\
 	    \hline
-	    3DES 		& Triple-Strength Data Encryption Standard 	& Bloková šifra \\
+	    3DES 		& Triple Strength Data Encryption Standard 	& Bloková šifra \\
 	    \hline
 	    RC2 		& Rivest Cipher 2 & Bloková šifra  \\
 	    \hline
@@ -142,13 +142,13 @@ V tabuľke \ref{symetricke-sifry} sú uvedené symetrické šifry, ktoré sa naj
 
 \item \textbf{Asymetrické šifrovanie} vzniklo ako riešenie problému symetrického šifrovania, ktoré používa jeden kľúč na výmenu informácií cez internet. Každý, kto pozná tento kľúč, môže dešifrovať správu.
 
-Asymetrické šifrovanie používa pri výmene informácií dva kľúče, \textbf{verejný} kľúč a \textbf{súkromný} kľúč. Verejný kľúč je k dispozícii každému, kto sa snaží odoslať nejakú správu. Druhý súkromný kľúč je uchovaný v tajnosti. 
+Asymetrické šifrovanie používa pri výmene informácií dva kľúče, \textbf{verejný} kľúč a~\textbf{súkromný} kľúč. Verejný kľúč je k~dispozícii každému, kto sa snaží odoslať nejakú správu. Druhý súkromný kľúč je uchovaný v~tajnosti. 
 
-Každá správa (text, binárne súbory alebo dokumenty), ktoré sú zašifrované pomocou verejného kľúča sa môžu dešifrovať iba s~použitím rovnakého algoritmu, ale s použitím zodpovedajúceho súkromného kľúča.
+Každá správa (text, binárne súbory alebo dokumenty), ktoré sú zašifrované pomocou verejného kľúča sa môžu dešifrovať iba s~použitím rovnakého algoritmu, ale s~použitím zodpovedajúceho súkromného kľúča.
 
-Komplexné matematické operácie môžu na niektoré systémy vyvinúť zaťaženie, čo si vyžaduje väčšiu kapacitu. Našťastie existuje pomerne jednoduchý spôsob, ako získať výhody šifrovania verejného kľúča a zároveň sa vyhýbať väčšine nákladov na systém.
+Komplexné matematické operácie môžu na niektoré systémy vyvinúť zaťaženie, čo si vyžaduje väčšiu kapacitu. Našťastie existuje pomerne jednoduchý spôsob, ako získať výhody šifrovania verejného kľúča a~zároveň sa vyhýbať väčšine nákladov na systém.
 
-Príklad výpočtu algoritmu RSA:
+Príklad výpočtu algoritmu verejného kľúča popisuju rovnice (\ref{integral}) a (\ref{rsa})
 
 %begin{equation}
 %\label{euler}
@@ -159,7 +159,7 @@ Príklad výpočtu algoritmu RSA:
 
 \begin{equation}
 \label{integral}
-	\int_{-\infty}^{x} \zlomok{\varphi}{x} \, \mathrm d x  =\, 
+	\int_{-\infty}^{x} \zlomok{\varphi}{x} \, \mathrm d x=\, 
 	\lim_{x\rightarrow \infty} \frac{x^3-\varphi}{\left(2 \varphi + 1\right) \left(3x -1\right)},
 \end{equation}
 
@@ -168,7 +168,7 @@ Príklad výpočtu algoritmu RSA:
  	m^{ed} = m^{1+h \varphi(n)} = m(m^{\varphi(n)})^h \equiv m.
 \end{equation}
 
-\item \textbf{Hybridný kryptosystém} je optimálny spôsob ako zlepšiť výkonnosť a efektivitu výmeny informácií. Je to kombinácia symetrického a asymetrického šifrovania. V~podstate sa jedna o to, že pre veľmi dlhé správy je väčšina práce v šifrovaní a de\-šifro\-va\-ní vykonaná efektívnejšou schémou symetrických kľúčov, zatiaľ čo neefektívna schéma asymetrického šifrovania sa používa iba na šifrovanie a dešifrovanie krátkej kľúčovej hodnoty.
+\item \textbf{Hybridný kryptosystém} je optimálny spôsob ako zlepšiť výkonnosť a~efektivitu výmeny informácií. Je to kombinácia symetrického a~asymetrického šifrovania. V~podstate sa jedna o~to, že pre veľmi dlhé správy je väčšina práce v~šifrovaní a~de\-šifro\-va\-ní vykonaná efektívnejšou schémou symetrických kľúčov, zatiaľ čo neefektívna schéma asymetrického šifrovania sa používa iba na šifrovanie a~dešifrovanie krátkej kľúčovej hodnoty.
 
 Obrázok \ref{hybridny-kryptosystem} znázorňuje architektúru hybridnej komunikácie.
 
@@ -181,17 +181,17 @@ Obrázok \ref{hybridny-kryptosystem} znázorňuje architektúru hybridnej komuni
 
 \end{enumerate}
 
-\chapter[Realizácia a výsledky analýzy]{Realizácia a výsledky analýzy}
+\chapter[Realizácia a~výsledky analýzy]{Realizácia a~výsledky analýzy}
 \section{Spracovanie výsledkov analýzy}
 Výsledky analýzy boli sprostredkované za pomocí naprogramovanej aplikácie. Na výstupe boli zhrnuté bezpečnostné mechanizmy serverov využívajúce rôzne typy zabezpečenia. 
 
-Z celkového počtu testovaných serverov 86, bola väčšina \textbf{zabezpečených}.
+Z~celkového počtu testovaných serverov 86, bola väčšina \textbf{zabezpečených}.
 
-Keď si viac rozoberieme servery, ktoré používali protokol HTTPS, väčšina z nich komunikovala prostredníctvom najnovšieho kryptografického protokol \textbf{TLS 1.2}\,.
+Keď si viac rozoberieme servery, ktoré používali protokol HTTPS, väčšina z~nich komunikovala prostredníctvom najnovšieho kryptografického protokol \textbf{TLS 1.2}\,.
 
 Boli nájdene servery, ktoré nepoužívali bezpečnú šifrovaciu sadu, ktorá je pre takúto komunikáciu veľmi dôležitá.
 
-Nakoniec pri analýze certifikátov vidíme, že niektoré nepatria medzi certifikačnú autoritu, takže sa nedajú považovať za dôveryhodné a je na každom užívateľovi, či sa rozhodne dôverovať príslušnej spoločnosti, ktorá vydala tento certifikát.
+Nakoniec pri analýze certifikátov vidíme, že niektoré nepatria medzi certifikačnú autoritu, takže sa nedajú považovať za dôveryhodné a~je na každom užívateľovi, či sa rozhodne dôverovať príslušnej spoločnosti, ktorá vydala tento certifikát.
 
 Na obrázku \ref{result} vidíme výsledky analýzy webových serverov.
 
